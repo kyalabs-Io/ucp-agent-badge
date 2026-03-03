@@ -6,7 +6,7 @@ This repo contains the canonical manifest and integration documentation for the 
 
 ---
 
-## For Merchants: Add PayClaw to Your UCP Manifest
+## For Merchants: Add PayClaw to Your UCP Manifest for User Verification
 
 Add this to the `capabilities` array in your `/.well-known/ucp`:
 
@@ -28,6 +28,7 @@ That's it. Agents visiting your store will discover PayClaw and prompt their use
 2. It sees `io.payclaw.common.identity` in the capabilities
 3. If the agent has a PayClaw badge, it includes an `identity_declaration` in its checkout request
 4. If it doesn't, it prompts the user: *"This store verifies user-authorized agents. Run `npx -y @payclaw/mcp-server` to authorize me to continue."*
+   -  (See [payclaw/badge-server](https://github.com/payclaw/badge-server) for more detail) 
 
 ### `config.required`
 
