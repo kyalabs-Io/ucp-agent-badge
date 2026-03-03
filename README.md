@@ -53,7 +53,7 @@ That's it. Agents visiting your store will discover PayClaw and prompt their use
 
 When an agent presents a PayClaw badge at checkout, verify it with one HTTP call. No API key. No PayClaw account required.
 
-```
+```http
 POST https://payclaw.io/api/oauth/introspect
 Content-Type: application/x-www-form-urlencoded
 
