@@ -109,6 +109,7 @@ Invalid, expired, or revoked: `{"active": false}` per [RFC 7662](https://www.rfc
 
 ```python
 import jwt  # PyJWT
+from jwt.algorithms import ECAlgorithm
 import requests
 
 # Fetch PayClaw's public keys
@@ -117,7 +118,8 @@ jwks = {k["kid"]: k for k in profile["signing_keys"]}
 
 # Verify
 header = jwt.get_unverified_header(token)
-key = jwks[header["kid"]]
+jwk = jwks[header["kid"]]
+key = ECAlgorithm.from_jwk(jwk)
 identity = jwt.decode(token, key, algorithms=["ES256"])
 ```
 
