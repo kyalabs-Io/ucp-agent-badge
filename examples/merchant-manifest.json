@@ -1,16 +1,7 @@
 {
-  "_comment": "Reference UCP manifest for a merchant accepting PayClaw-badged agents. Place at /.well-known/ucp on your domain.",
-
   "ucp": {
     "version": "2026-01-11"
   },
-
-  "merchant": {
-    "name": "Acme Store",
-    "domain": "acme-store.com",
-    "_comment": "Your store name and domain. Agents use this to identify the merchant."
-  },
-
   "capabilities": [
     {
       "name": "io.payclaw.common.identity",
@@ -18,12 +9,9 @@
       "extends": "dev.ucp.shopping.checkout",
       "spec": "https://payclaw.io/docs/ucp-identity",
       "schema": "https://payclaw.io/schema/identity",
-      "_comment": "Declares that this merchant recognizes PayClaw agent badges. Agents with valid badges present them at checkout."
+      "config": {
+        "required": false
+      }
     }
-  ],
-
-  "config": {
-    "required": false,
-    "_comment": "false (default): badged agents are preferred but unbadged agents can still check out. true: agents without a valid badge receive requires_escalation."
-  }
+  ]
 }

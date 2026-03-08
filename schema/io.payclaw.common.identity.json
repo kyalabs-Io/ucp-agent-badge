@@ -2,42 +2,25 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://payclaw.io/schema/identity",
   "title": "PayClaw Agent Identity Extension",
-  "description": "UCP extension schema for io.payclaw.common.identity. Declares that an AI agent is an authorized actor operating on behalf of a verified human principal.",
+  "description": "UCP extension schema for io.payclaw.common.identity. Defines the payload an agent includes in the checkout request under the 'io.payclaw.common.identity' key.",
   "type": "object",
-  "required": ["credential_provider", "badge_status", "token"],
+  "required": ["token", "kid"],
   "properties": {
-    "credential_provider": {
-      "const": "io.payclaw.common.identity",
-      "description": "PayClaw credential provider identifier."
-    },
-    "badge_status": {
-      "type": "string",
-      "enum": ["declared"],
-      "description": "Current badge state. 'declared' indicates the agent has presented a valid consent key backed by a verified human principal."
-    },
     "token": {
       "type": "string",
-      "description": "ES256-signed JWT. Verify locally with @payclaw/badge/verify — no API call, no PayClaw account required.",
+      "description": "ES256-signed JWT issued by PayClaw. Verify locally with @payclaw/badge/verify — no API call required.",
       "minLength": 1
-    },
-    "assurance_level": {
-      "type": "string",
-      "enum": ["starter", "regular", "veteran", "elite"],
-      "description": "Trust tier based on verified transaction history. starter: <10, regular: 10-49, veteran: 50-199, elite: 200+.",
-      "default": "starter"
     },
     "kid": {
       "type": "string",
-      "description": "Key ID used to sign the token. Matches a key in the JWKS at payclaw.io/.well-known/ucp."
+      "description": "Key ID used to sign the token. Matches a key in the JWKS at payclaw.io/.well-known/ucp.",
+      "minLength": 1
     }
   },
   "additionalProperties": false,
   "examples": [
     {
-      "credential_provider": "io.payclaw.common.identity",
-      "badge_status": "declared",
       "token": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InBheWNsYXctYmFkZ2UtdjEifQ...",
-      "assurance_level": "regular",
       "kid": "payclaw-badge-v1"
     }
   ]
