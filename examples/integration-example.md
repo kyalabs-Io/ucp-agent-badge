@@ -33,7 +33,7 @@ When an agent submits a checkout request, the kyaLabs badge arrives as an ES256-
 
 ### Algorithm
 
-```
+```text
 1. Extract the token from the checkout payload
    └─ req.body['io.kyalabs.common.identity'].token
 
@@ -95,7 +95,7 @@ The `kid` (Key ID) is in the JWT header, not the payload.
 
 ## 4. Act on the result
 
-```
+```text
 IF verification succeeds:
   • Authorized agent — verified human principal behind this session
   • Skip CAPTCHA for verified agents
@@ -113,7 +113,7 @@ IF verification fails (invalid signature, expired, unknown key):
 ## What you don't need
 
 - **No kyaLabs account.** Verification is local — your server checks the JWT signature against published keys.
-- **No API calls to kyaLabs.** Signing keys are fetched once and cached. kyaLabs uptime is not a dependency.
+- **No per-request API calls to kyaLabs.** Signing keys are fetched once and cached. kyaLabs uptime is not required for request handling.
 - **No integration fee.** The verification algorithm is documented and the reference implementation is MIT-licensed.
 - **No SDK or package install.** Implement the standard JWKS + ES256 verification in your existing stack.
 
