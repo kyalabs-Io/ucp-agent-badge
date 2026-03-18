@@ -20,16 +20,17 @@ This repo contains the canonical manifest, schema, and reference implementation 
 
 ## For Merchants: Add kyaLabs to Your UCP Manifest
 
-Add this to the `capabilities` array in your `/.well-known/ucp`:
+Add this to the `capabilities` object in your `/.well-known/ucp`:
 
 ```json
-{
-  "name": "io.kyalabs.common.identity",
-  "version": "2026-03-02",
-  "extends": "dev.ucp.shopping.checkout",
-  "spec": "https://kyalabs.io/docs/ucp-identity",
-  "schema": "https://kyalabs.io/schema/identity"
-}
+"io.kyalabs.common.identity": [
+  {
+    "version": "2026-03-02",
+    "extends": "dev.ucp.shopping.checkout",
+    "spec": "https://kyalabs.io/ucp/spec/identity",
+    "schema": "https://kyalabs.io/ucp/schemas/identity.json"
+  }
+]
 ```
 
 That's it. Agents visiting your store will discover kyaLabs and present a cryptographic badge when they have one.
@@ -46,16 +47,17 @@ That's it. Agents visiting your store will discover kyaLabs and present a crypto
 ### `config.required`
 
 ```json
-{
-  "name": "io.kyalabs.common.identity",
-  "version": "2026-03-02",
-  "extends": "dev.ucp.shopping.checkout",
-  "spec": "https://kyalabs.io/docs/ucp-identity",
-  "schema": "https://kyalabs.io/schema/identity",
-  "config": {
-    "required": false
+"io.kyalabs.common.identity": [
+  {
+    "version": "2026-03-02",
+    "extends": "dev.ucp.shopping.checkout",
+    "spec": "https://kyalabs.io/ucp/spec/identity",
+    "schema": "https://kyalabs.io/ucp/schemas/identity.json",
+    "config": {
+      "required": false
+    }
   }
-}
+]
 ```
 
 - `required: false` (default) — declared agents are preferred but checkout proceeds without a badge

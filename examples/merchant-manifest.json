@@ -1,17 +1,18 @@
 {
   "ucp": {
-    "version": "2026-01-11"
-  },
-  "capabilities": [
-    {
-      "name": "io.kyalabs.common.identity",
-      "version": "2026-03-02",
-      "extends": "dev.ucp.shopping.checkout",
-      "spec": "https://kyalabs.io/docs/ucp-identity",
-      "schema": "https://kyalabs.io/schema/identity",
-      "config": {
-        "required": false
-      }
+    "version": "2026-01-23",
+    "capabilities": {
+      "io.kyalabs.common.identity": [
+        {
+          "version": "2026-03-02",
+          "extends": "dev.ucp.shopping.checkout",
+          "spec": "https://kyalabs.io/ucp/spec/identity",
+          "schema": "https://kyalabs.io/ucp/schemas/identity.json",
+          "config": {
+            "required": false
+          }
+        }
+      ]
     }
-  ]
+  }
 }

@@ -4,26 +4,22 @@ Add kyaLabs agent verification to your checkout. No kyaLabs account, no API key,
 
 ---
 
-## 1. Add the manifest
+## 1. Add the capability
 
-Place the kyaLabs capability in your `/.well-known/ucp` manifest:
+Add this to the `capabilities` object in your `/.well-known/ucp`:
 
 ```json
-{
-  "ucp": { "version": "2026-01-11" },
-  "capabilities": [
-    {
-      "name": "io.kyalabs.common.identity",
-      "version": "2026-03-02",
-      "extends": "dev.ucp.shopping.checkout",
-      "spec": "https://kyalabs.io/docs/ucp-identity",
-      "schema": "https://kyalabs.io/schema/identity"
-    }
-  ]
-}
+"io.kyalabs.common.identity": [
+  {
+    "version": "2026-03-02",
+    "extends": "dev.ucp.shopping.checkout",
+    "spec": "https://kyalabs.io/ucp/spec/identity",
+    "schema": "https://kyalabs.io/ucp/schemas/identity.json"
+  }
+]
 ```
 
-See [merchant-manifest.json](./merchant-manifest.json) for a complete reference manifest.
+See [merchant-manifest.json](./merchant-manifest.json) for a complete reference profile.
 
 ---
 
